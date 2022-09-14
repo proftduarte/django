@@ -1,0 +1,23 @@
+{% load static %}
+{% if variavel == 1 %}</p>
+    <html>
+        <head>
+            <title>OLÀ, OLÀ</title>
+            <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+        </head>
+        <p class="colore">BEM VINDO A PÁGINA PRINCIPAL</p>
+        
+    </html>
+{% else %}
+    <html>
+        <head>
+            <title>:(</title>
+            <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+        </head>
+        <p class="colore2">INFELIZMENTE VC NAO TEM ACESSO</p>
+        
+    </html>
+{% endif %}
+
