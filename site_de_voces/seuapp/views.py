@@ -8,3 +8,6 @@ def home(request):
 
 def cafe(request):
     return render(request, 'cafe.html',{})
+
+def nova_pagina(request):
+    return render(request, 'nova_pagina.html',{})
