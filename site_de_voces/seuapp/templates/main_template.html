@@ -1,0 +1,27 @@
+{% load static %}
+<html>
+    <head>
+        <title> 
+            {% block title %}
+            {% endblock %}
+        </title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <div class="header">
+            {% block cabacalho %}
+            {{variavel}}
+            {% endblock %}
+        </div>
+    </head>
+    <body>
+        <div class='img'name="Editavel">
+            {% block imagem %}
+            {% endblock %}
+        </div>
+        {% block body %}
+        {% endblock %}
+
+    </body>
+    <footer>
+        <div class="footer">RODAPE</div>
+    </footer>
+</html>

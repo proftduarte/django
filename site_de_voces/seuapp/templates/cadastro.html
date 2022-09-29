@@ -1,0 +1,21 @@
+{% extends 'main_template.html' %}
+
+{% block title %}
+    FORM
+{% endblock %}
+
+
+{% block cabecalho %}
+Cabeçalho da pagina {{variavel}}
+{% endblock %}
+
+{% block body%}
+<form name="cad_user" method="post" action="/docad/">
+    {% csrf_token %}
+    <div>Usuario: {{form.usuario}}</div>
+    <div>Senha: {{form.senha}}</div>
+    <div>Primerio Nome: {{form.nome}}</div>
+    <div>Ultimo Nome: {{form.ultimo_nome}}</div>
+    <input type="submit" value="Salvar">
+</form>
+{% endblock%}
