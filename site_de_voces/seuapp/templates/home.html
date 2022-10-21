@@ -1,23 +1,18 @@
-{% load static %}
-{% if variavel == 1 %}</p>
-    <html>
-        <head>
-            <title>OLÀ, OLÀ</title>
-            <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% extends 'main_template.html' %}
 
-        </head>
-        <p class="colore">BEM VINDO A PÁGINA PRINCIPAL</p>
-        
-    </html>
-{% else %}
-    <html>
-        <head>
-            <title>:(</title>
-            <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% block title %}
+    Este é o titulo
+{% endblock %}
 
-        </head>
-        <p class="colore2">INFELIZMENTE VC NAO TEM ACESSO</p>
-        
-    </html>
-{% endif %}
 
+{% block cabecalho %}
+Cabeçalho da pagina {{variavel}}
+{% endblock %}
+
+{% block body%}
+    <div class="conteudo">
+        Seu id de usuário<br>
+        {{uid}}
+    </div>
+
+{% endblock%}

@@ -1,3 +1,25 @@
-<html>
-    Esta é a pagina do cafe
-</html>
+{% extends 'main_template.html' %}
+
+{% block title %}
+Está é a pagina do café
+{% endblock %}
+
+{% block cabecalho %}
+    {{variavel}}
+{% endblock %}
+
+{% block imagem %}
+    <div class="login_container">
+        <form name="log_user" method="post" action="/dologin/">
+            {% csrf_token %}
+            <div>Usuario: {{form.usuario}}</div>
+            <div>Senha: {{form.senha}}</div>
+            <input type="submit" value="LOGIN">
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block body %}
+    Este é o conteudo da pagina do cafe
+{% endblock %}
