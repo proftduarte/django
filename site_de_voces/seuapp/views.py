@@ -13,8 +13,6 @@ def cafe(request):
 
 def dologin(request):
     if request.method == "POST":
-        tabela = Usuario.objects.all()
-        form = UsersForm(request.POST or None)
         try:
             u = Usuario.objects.get(usuario=request.POST['usuario'])
         except:
@@ -28,11 +26,25 @@ def dologin(request):
     else:
         redirect('cafe')
 
+def dologout(request):
+    if request.session['uid'] != "" or request.session['uid'] != None:
+        try:
+            del request.session['uid'] # apaga a sessão
+            return HttpResponse("Sessão finalizada")
+        except KeyError:
+            return redirect('home')
+    return redirect('home')    
+
 
 def home(request):
     profile = {}
-    profile['uid'] = request.session['uid']
-    return render(request,'home.html',profile)
+    try:
+        profile['perfil'] = Usuario.objects.get(id=request.session['uid'])
+        profile['custom'] = "LOGOUT"
+    except KeyError:
+        profile['custom'] = "LOGIN"
+    print(profile['custom'])
+    return render(request,'home.html', profile)
 
 def cadastro(request):
     data = {}
@@ -49,3 +61,18 @@ def docad(request):
     if form.is_valid() and erro == '': 
         form.save()
     return redirect('cafe')
+
+def profile(request):
+    profile = {}
+    try:
+        profile['perfil'] = UsersForm(instance=Usuario.objects.get(id=request.session['uid']))
+        return render(request,'profile.html', profile)
+    except:
+        return HttpResponse("vc não está logado")
+def do_update(request):
+    form= Usuario.objects.get(id=request.session['uid'])
+    form.usuario = request.POST['usuario']
+    form.nome = request.POST['nome']
+    form.ultimo_nome = request.POST['ultimo_nome']
+    form.save()
+    return redirect('home')

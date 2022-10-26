@@ -8,4 +8,6 @@ urlpatterns = [
     path('cadastro/', views.cadastro, name='cadastro'),
     path('docad/', views.docad, name='docad'),
     path('dologin/', views.dologin, name='dologin'),
+    path('perfil/', views.profile, name='perfil'),
+    path('doupdate/', views.do_update, name='doupdate'),
 ]

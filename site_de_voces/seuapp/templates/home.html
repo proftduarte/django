@@ -6,13 +6,20 @@
 
 
 {% block cabecalho %}
-Cabeçalho da pagina {{variavel}}
+Cabeçalho da pagina
 {% endblock %}
 
 {% block body%}
     <div class="conteudo">
-        Seu id de usuário<br>
-        {{uid}}
+        {% if custom == "LOGOUT" %}
+            Seu id de usuário<br>
+            {{perfil.usuario}}
+            <a href="#">{{custom}}</a> 
+            <br><br>
+            <a href="/perfil/"> Editar Perfil</a>
+        {% else %}
+            <a href="/cafe/">{{custom}}</a> 
+        {% endif %}     
     </div>
 
 {% endblock%}

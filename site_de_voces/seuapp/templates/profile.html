@@ -1,0 +1,20 @@
+{% extends 'main_template.html' %}
+
+{% block title %}
+    EDITE SEU PERFIL
+{% endblock %}
+
+
+{% block cabecalho %}
+    DADOS DO USUARIO
+{% endblock %}
+
+{% block body%}
+<form name="edit_user" method="post" action="/doupdate/">
+    {% csrf_token %}
+    <div>Usuario: {{perfil.usuario}}</div>
+    <div>Primerio Nome: {{perfil.nome}}</div>
+    <div>Ultimo Nome: {{perfil.ultimo_nome}}</div>
+    <input type="submit" value="Atualizar">
+</form>
+{% endblock%}
