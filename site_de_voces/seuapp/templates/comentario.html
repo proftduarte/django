@@ -1,0 +1,6 @@
+<form name="coment" method="post" action="/comentario/">
+    {% csrf_token %}
+    {{form.comentario}}
+    <br>
+    <input type="submit" value="Comentar">
+</form>

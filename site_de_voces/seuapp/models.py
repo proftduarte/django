@@ -7,3 +7,7 @@ class Usuario(models.Model):
     senha = models.CharField(max_length=16)
     nome = models.CharField(max_length=16)
     ultimo_nome = models.CharField(max_length=16)
+
+class Comentario(models.Model):
+    comentario = models.TextField(max_length=255)
+    usuario = models.ForeignKey(Usuario,on_delete=models.CASCADE)

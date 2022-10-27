@@ -10,4 +10,5 @@ urlpatterns = [
     path('dologin/', views.dologin, name='dologin'),
     path('perfil/', views.profile, name='perfil'),
     path('doupdate/', views.do_update, name='doupdate'),
+    path('comentario/', views.comentario, name='comentario'),
 ]

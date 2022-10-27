@@ -1,7 +1,7 @@
 from http.client import HTTPResponse
 from django.shortcuts import render, redirect, HttpResponse
-from seuapp.forms import UsersForm
-from seuapp.models import Usuario
+from seuapp.forms import UsersForm,ComentariosForm
+from seuapp.models import Usuario,Comentario
 
 # Create your views here.
 
@@ -76,3 +76,17 @@ def do_update(request):
     form.ultimo_nome = request.POST['ultimo_nome']
     form.save()
     return redirect('home')
+
+
+
+def comentario(request):
+    data ={}
+    if request.method == 'POST':
+        c = Comentario(usuario=Usuario.objects.get(id=request.session['uid']),comentario=request.POST['comentario'])
+        c.save()
+        return redirect('comentario')
+    else:
+        data['form'] = ComentariosForm()
+        print(data['form'])
+        return render(request,'comentario.html',data)
+
