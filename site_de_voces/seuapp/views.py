@@ -87,6 +87,18 @@ def comentario(request):
         return redirect('comentario')
     else:
         data['form'] = ComentariosForm()
-        print(data['form'])
+        data['history'] = Comentario.objects.filter(usuario=request.session['uid'])
+        print(data['history'])
         return render(request,'comentario.html',data)
 
+def edit_coment(request, id):
+    c = Comentario.objects.get(id=id)
+    print(c)
+    if request.method == 'POST':
+        f = ComentariosForm(request.POST,instance=c)
+        f.save()
+        return redirect('comentario')
+
+    else:    
+        f = ComentariosForm(instance=c)
+        return render(request,'comentario.html',{'form':f})

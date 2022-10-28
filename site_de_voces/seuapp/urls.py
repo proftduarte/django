@@ -11,4 +11,5 @@ urlpatterns = [
     path('perfil/', views.profile, name='perfil'),
     path('doupdate/', views.do_update, name='doupdate'),
     path('comentario/', views.comentario, name='comentario'),
+    path('comentario/<int:id>/editar/',views.edit_coment, name='edit_coment'),
 ]
