@@ -11,6 +11,7 @@ class Usuario(models.Model):
 class Comentario(models.Model):
     comentario = models.TextField(max_length=255)
     usuario = models.ForeignKey(Usuario,on_delete=models.CASCADE)
+    is_fav =models.BooleanField()
 
 class Produtos(models.Model):
     nome = models.CharField(max_length=16)

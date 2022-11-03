@@ -82,7 +82,11 @@ def do_update(request):
 def comentario(request):
     data ={}
     if request.method == 'POST':
-        c = Comentario(usuario=Usuario.objects.get(id=request.session['uid']),comentario=request.POST['comentario'])
+        try:
+            if request.POST['is_fav']:
+                c = Comentario(usuario=Usuario.objects.get(id=request.session['uid']),comentario=request.POST['comentario'],is_fav=1)
+        except:
+            c = Comentario(usuario=Usuario.objects.get(id=request.session['uid']),comentario=request.POST['comentario'],is_fav=0)
         c.save()
         return redirect('comentario')
     else:

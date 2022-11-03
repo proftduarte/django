@@ -13,4 +13,4 @@ class UsersForm(ModelForm):
 class ComentariosForm(ModelForm):
     class Meta:
         model = Comentario
-        fields = ['comentario']
+        fields = ['comentario', 'is_fav']

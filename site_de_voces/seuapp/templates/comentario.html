@@ -1,6 +1,8 @@
+{% load static %}
 <form name="coment" method="post">
     {% csrf_token %}
     {{form.comentario}}
+    {{form.is_fav}}
     <br>
     <input type="submit" value="Comentar">
 </form>
@@ -8,6 +10,18 @@
 <b>--- Seus Comentarios ---</b>
 {% if history %}
     {% for c in history %}
-    <br>{{c.comentario}} -- {{c.usuario.usuario}} -- <a href="{% url 'edit_coment' c.id %}">[EDITAR]</a>
+    <br>{{c.comentario}} -- {{c.usuario.usuario}} -- <a href="{% url 'edit_coment' c.id %}">[EDITAR]</a> -- {% if c.is_fav %} <img src=" {% static '/img/on.png' %}" width="20px" height="20px">{%else%}<img src=" {% static '/img/off.png' %}" width="20px" height="20px"> {%endif%}
     {% endfor %}
 {% endif %}
+
+
+<script>
+    function chgimg(img){
+        fav = document.getElementById("fav")
+        if (fav.src == "{% static 'img/on.png' %}"){
+            fav.src = "{% static 'img/off.png' %}"
+        }else{
+            fav.src = "{% static 'img/on.png' %}"
+        }       
+    }
+</script>
